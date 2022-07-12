@@ -30,11 +30,6 @@ public class Lesson_14 {
         }
 
         if (appiumDriver != null) {
-//            appiumDriver.manage().timeouts().implicitlyWait(30L, TimeUnit.SECONDS);
-//
-//            System.out.println("Connected to appium server and launched target app!");
-//            MobileElement loginLabel = appiumDriver.findElementByAccessibilityId("Login");
-//            loginLabel.click();
             appiumDriver.quit();
         } else {
             System.out.println("Error when connecting with Appium server!");
