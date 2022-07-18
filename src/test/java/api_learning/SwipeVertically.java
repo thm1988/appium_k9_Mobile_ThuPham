@@ -28,9 +28,8 @@ public class SwipeVertically {
             // Wait until screen is loaded
             WebDriverWait wait = new WebDriverWait(appiumDriver, 10L);
             wait.until(ExpectedConditions
-                    .visibilityOfElementLocated(MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"Form Component\")")));
-
-
+                    .visibilityOfElementLocated(MobileBy
+                            .AndroidUIAutomator("new UiSelector().textContains(\"Form Component\")")));
 
             // Fill in the input field
             MobileElement inputFieldElem = appiumDriver.findElement(MobileBy.AccessibilityId("text-input"));
@@ -41,17 +40,16 @@ public class SwipeVertically {
             switchField.click();
 
             // Dropdown field
-//            MobileElement dropdownField = appiumDriver.findElement(MobileBy.AccessibilityId("Dropdown"));
-//            dropdownField.click();
-//            List<MobileElement> dropDownMenu =
-//                    appiumDriver.findElements(MobileBy.className("android.widget.ListView"));
-//            for (MobileElement downMenu : dropDownMenu) {
-//                String textDropdown = downMenu.getText();
-//                if (textDropdown.equalsIgnoreCase("Appium is awesome")) {
-//                    downMenu.click();
-//                    break;
-//                }
-//            }
+            MobileElement dropdownField = appiumDriver.findElement(MobileBy.AccessibilityId("Dropdown"));
+            dropdownField.click();
+//            WebDriverWait waitPopup = new WebDriverWait(appiumDriver, 3L);
+//            waitPopup.until(ExpectedConditions
+//                    .visibilityOfElementLocated(MobileBy
+//                            .AndroidUIAutomator("new UiSelector().textContains(\"Form Component\")")));
+            MobileElement dropDownSelection =
+                    appiumDriver.findElement(MobileBy
+                            .AndroidUIAutomator("new UiSelector().textContains(\"Appium is awesome\")"));
+            dropDownSelection.click();
 
             // Get the screen dimension
             Dimension screenDimension = appiumDriver.manage().window().getSize();
@@ -79,19 +77,28 @@ public class SwipeVertically {
                     perform();
 
             // Simulate touch and drag - Up
-            TouchAction touchActionUp = new TouchAction(appiumDriver);
-            touchActionUp.
-//                    press(endPoint).
-//                    waitAction(new WaitOptions().withDuration(Duration.ofMillis(500))).
-                    longPress(endPoint).
-                    moveTo(startPoint).
-                    release().
-                    perform();
+//            TouchAction touchActionUp = new TouchAction(appiumDriver);
+//            touchActionUp.
+//                    longPress(endPoint).
+//                    moveTo(startPoint).
+//                    release().
+//                    perform();
 
 
             // Click on button activate
             MobileElement btnActive = appiumDriver.findElement(MobileBy.AccessibilityId("button-Active"));
             btnActive.click();
+
+            // Get the text on the popup
+            MobileElement popupInfo =
+                    appiumDriver.findElement(MobileBy
+                            .id("android:id/message"));
+            System.out.println(popupInfo.getText());
+
+            MobileElement okButton =
+                    appiumDriver.findElement(MobileBy
+                            .id("android:id/button1"));
+            okButton.click();
 
             Thread.sleep(3000);
 
