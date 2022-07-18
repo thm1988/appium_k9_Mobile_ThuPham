@@ -46,23 +46,27 @@ public class SwipeHorizontal {
 
             // Simulate touch and drag - right to left
             TouchAction touchActionRightToLeft = new TouchAction(appiumDriver);
-            touchActionRightToLeft.
-                    press(startPoint).
-                    waitAction(new WaitOptions().withDuration(Duration.ofMillis(500))).
-                    moveTo(endPoint).
-                    release().
-                    perform();
+            int times = 5 ;
+            for (int i = 0; i < times; i++) {
+                touchActionRightToLeft.
+                        press(startPoint).
+                        waitAction(new WaitOptions().withDuration(Duration.ofMillis(500))).
+                        moveTo(endPoint).
+                        release().
+                        perform();
+            }
 
             // Simulate touch and drag - left to right
             TouchAction touchActionUpLeftToRight = new TouchAction(appiumDriver);
-            touchActionUpLeftToRight.
+            for (int i = 0; i < times; i++) {
+                touchActionUpLeftToRight.
 //                    press(endPoint).
 //                    waitAction(new WaitOptions().withDuration(Duration.ofMillis(500))).
-                    longPress(endPoint).
-                    moveTo(startPoint).
-                    release().
-                    perform();
-
+                        longPress(endPoint).
+                        moveTo(startPoint).
+                        release().
+                        perform();
+            }
             Thread.sleep(3000);
 
         } catch (Exception e) {
