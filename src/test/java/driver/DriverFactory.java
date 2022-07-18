@@ -9,6 +9,7 @@ import platform.Platform;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class DriverFactory implements MobileCapabilityTypeEx {
 
@@ -24,7 +25,7 @@ public class DriverFactory implements MobileCapabilityTypeEx {
         URL appiumServer = null;
         try {
             appiumServer = new URL("http://localhost:4723/wd/hub");
-        } catch (MalformedURLException e){
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         if (appiumServer == null) {
@@ -33,15 +34,16 @@ public class DriverFactory implements MobileCapabilityTypeEx {
 
         switch (platform) {
             case ANDROID:
-                appiumDriver = new AndroidDriver<>(appiumServer,desiredCapabilities);
+                appiumDriver = new AndroidDriver<>(appiumServer, desiredCapabilities);
                 break;
             case IOS:
-                appiumDriver = new IOSDriver<>(appiumServer,desiredCapabilities);
+                appiumDriver = new IOSDriver<>(appiumServer, desiredCapabilities);
                 break;
         }
 
+        // Implicit wait
+        appiumDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         return appiumDriver;
     }
-
 
 }
