@@ -6,9 +6,8 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
-public class Lesson_14 {
+public class LaunchAppTest {
     public static void main(String[] args) {
         AppiumDriver<MobileElement> appiumDriver = null;
 
