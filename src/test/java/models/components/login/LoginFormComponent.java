@@ -16,14 +16,19 @@ public class LoginFormComponent {
         this.appiumDriver = appiumDriver;
     }
     public void inputUsername(String usernameTxt) {
-        if (!usernameTxt.isEmpty()) appiumDriver.findElement(usernameSel).sendKeys(usernameTxt);
+
+        MobileElement userNameElem = appiumDriver.findElement(usernameSel);
+        userNameElem.clear();
+        if (!usernameTxt.isEmpty()) userNameElem.sendKeys(usernameTxt);
     }
 
     public void inputPassword(String passwordTxt) {
-        if (!passwordTxt.isEmpty()) appiumDriver.findElement(passwordSel).sendKeys(passwordTxt);
+        MobileElement passwordElem = appiumDriver.findElement(passwordSel);
+        if (!passwordTxt.isEmpty()) passwordElem.sendKeys(passwordTxt);
     }
 
     public void clickOnLoginBtn() {
-        appiumDriver.findElement(loginBtnSel).click();
+        MobileElement loginBtnElem = appiumDriver.findElement(loginBtnSel);
+        loginBtnElem.click();
     }
 }
