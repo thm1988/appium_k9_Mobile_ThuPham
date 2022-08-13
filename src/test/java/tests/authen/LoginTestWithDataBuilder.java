@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import platform.Platform;
 import test_data.DataObjectBuilder;
 import test_data.models.LoginCred;
-import testflows.authentication.LoginFlow;
+import test_flows.authentication.LoginFlow;
 
 
 public class LoginTestWithDataBuilder {

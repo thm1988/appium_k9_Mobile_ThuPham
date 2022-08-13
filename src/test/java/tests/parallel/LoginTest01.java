@@ -1,4 +1,4 @@
-package tests.authen;
+package tests.parallel;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ import test_flows.authentication.LoginFlow;
 import tests.BaseTest;
 
 
-public class LoginTestWithBaseTest extends BaseTest {
+public class LoginTest01 extends BaseTest {
     @Test(dataProvider = "loginCredData")
     public void testLogin(LoginCred loginCred) {
         LoginFlow loginFlow = new LoginFlow(appiumDriver, loginCred.getEmail(), loginCred.getPassword());

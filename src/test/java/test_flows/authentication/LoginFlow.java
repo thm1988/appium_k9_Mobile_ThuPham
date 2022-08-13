@@ -1,4 +1,4 @@
-package testflows.authentication;
+package test_flows.authentication;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -6,7 +6,7 @@ import models.components.login.LoginFormComponent;
 import models.pages.LoginScreen;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.testng.Assert;
-import testflows.BaseFlow;
+import test_flows.BaseFlow;
 
 public class LoginFlow extends BaseFlow {
     private String username;

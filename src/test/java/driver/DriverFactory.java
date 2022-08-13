@@ -46,4 +46,38 @@ public class DriverFactory implements MobileCapabilityTypeEx {
         return appiumDriver;
     }
 
+    public static AppiumDriver<MobileElement> getDriver(Platform platform, String udid, String systemPort) {
+        AppiumDriver<MobileElement> appiumDriver = null;
+
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        desiredCapabilities.setCapability(PLATFORM_NAME, "Android");
+        desiredCapabilities.setCapability(AUTOMATION_NAME, "uiautomator2");
+        desiredCapabilities.setCapability(UDID, udid);
+        desiredCapabilities.setCapability(APP_PACKAGE, "com.wdiodemoapp");
+        desiredCapabilities.setCapability(APP_ACTIVITY, "com.wdiodemoapp.MainActivity");
+        desiredCapabilities.setCapability(SYSTEM_PORT, systemPort);
+
+        URL appiumServer = null;
+        try {
+            appiumServer = new URL("http://localhost:4723/wd/hub");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        if (appiumServer == null) {
+            throw new RuntimeException("[ERR] URL is null");
+        }
+
+        switch (platform) {
+            case ANDROID:
+                appiumDriver = new AndroidDriver<>(appiumServer, desiredCapabilities);
+                break;
+            case IOS:
+                appiumDriver = new IOSDriver<>(appiumServer, desiredCapabilities);
+                break;
+        }
+
+        // Implicit wait
+        appiumDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        return appiumDriver;
+    }
 }

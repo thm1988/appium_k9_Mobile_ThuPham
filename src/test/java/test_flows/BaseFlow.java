@@ -1,4 +1,4 @@
-package testflows;
+package test_flows;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -14,4 +14,9 @@ public class BaseFlow {
     public void gotoLoginScreen(){
         new LoginScreen(appiumDriver).bottomNavComp().clickOnLoginIcon();
     }
+
+    public void gotoFormScreen(){
+        new LoginScreen(appiumDriver).bottomNavComp().clickOnLoginIcon();
+    }
+
 }

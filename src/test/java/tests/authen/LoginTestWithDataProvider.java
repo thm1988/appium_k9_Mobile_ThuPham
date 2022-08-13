@@ -6,10 +6,7 @@ import io.appium.java_client.MobileElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import platform.Platform;
-import testflows.authentication.LoginFlow;
-
-import java.util.ArrayList;
-import java.util.List;
+import test_flows.authentication.LoginFlow;
 
 
 public class LoginTestWithDataProvider {
