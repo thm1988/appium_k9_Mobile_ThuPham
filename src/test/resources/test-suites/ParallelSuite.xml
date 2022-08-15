@@ -4,14 +4,15 @@
         <parameter name="udid" value="emulator-5554"/>
         <parameter name="systemPort" value="8300"/>
         <classes>
-            <class name="tests.parallel.LoginTest01" />
+            <class name="tests.parallel.Login" />
+            <class name="tests.form.FormTest" />
         </classes>
     </test>
     <test name="Authentication 02" >
         <parameter name="udid" value="0A221FDD4000L2"/>
         <parameter name="systemPort" value="8400"/>
         <classes>
-            <class name="tests.parallel.LoginTest02" />
+            <class name="tests.form.FormTest" />
         </classes>
     </test>
 </suite>

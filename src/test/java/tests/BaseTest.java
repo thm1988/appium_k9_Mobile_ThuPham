@@ -18,17 +18,30 @@ public class BaseTest {
 
     private static final List<DriverFactory> driverThreadPool = Collections.synchronizedList(new ArrayList<>());
     private static ThreadLocal<DriverFactory> driverThread;
+    private String udid;
+    private String systemPort;
+
     protected AppiumDriver<MobileElement> getDriver(){
         return driverThread.get().getDriver(Platform.ANDROID, udid, systemPort);
     }
     @BeforeTest
     @Parameters({"udid","systemPort"})
     public void initAppiumSession (String udid, String systemPort) {
-        appiumDriver = DriverFactory.getDriver(Platform.ANDROID, udid, systemPort);
+        this.udid = udid;
+        this.systemPort = systemPort;
+        driverThread = ThreadLocal.withInitial(() -> {
+            DriverFactory driverThread = new DriverFactory();
+            driverThreadPool.add(driverThread);
+            return driverThread;
+        });
+//        if (appiumDriver == null) {
+//            appiumDriver = DriverFactory.getDriver(Platform.ANDROID, udid, systemPort);
+//        }
     }
 
     @AfterTest(alwaysRun = true)
     public void quitAppiumSession () {
-        appiumDriver.quit();
+        driverThread.get().quitAppiumDriver();
+        //appiumDriver.quit();
     }
 }
