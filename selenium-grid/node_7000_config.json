@@ -1,24 +1,21 @@
 {
   "capabilities": [
     {
-      "version": "12",
       "maxInstances": 1,
       "platform": "ANDROID",
-      "deviceName": "sdk_gphone64_arm64",
-      "udid": "emulator-5554"
     }
   ],
   "configuration": {
     "cleanUpCycle": 2000,
     "timeout": 30000,
     "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
-    "url": "http://192.168.1.6:7000/wd/hub",
-    "host": "192.168.1.6",
+    "url": "http://192.168.250.66:7000/wd/hub",
+    "host": "192.168.250.66",
     "port": 7000,
     "maxSession": 1,
     "register": true,
     "registerCycle": 5000,
-    "hubHost": "192.168.1.6",
+    "hubHost": "192.168.250.66",
     "hubPort": 4444,
     "hubProtocol": "http"
   }

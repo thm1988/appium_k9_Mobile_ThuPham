@@ -50,7 +50,6 @@ public class DriverFactory implements MobileCapabilityTypeEx {
 
     public AppiumDriver<MobileElement> getDriver(Platform platform, String udid, String systemPort) {
         if (appiumDriver == null) {
-
             DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
             desiredCapabilities.setCapability(PLATFORM_NAME, "Android");
             desiredCapabilities.setCapability(AUTOMATION_NAME, "uiautomator2");
@@ -58,15 +57,15 @@ public class DriverFactory implements MobileCapabilityTypeEx {
             desiredCapabilities.setCapability(APP_PACKAGE, "com.wdiodemoapp");
             desiredCapabilities.setCapability(APP_ACTIVITY, "com.wdiodemoapp.MainActivity");
             desiredCapabilities.setCapability(SYSTEM_PORT, systemPort);
-
+            String targetServer = "http://192.168.250.66:4444/wd/hub";
             URL appiumServer = null;
             try {
-                appiumServer = new URL("http://localhost:4723/wd/hub");
+                appiumServer = new URL(targetServer);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
             if (appiumServer == null) {
-                throw new RuntimeException("Can't construct the appium server url @http://localhost:4723/wd/hub");
+                throw new RuntimeException("Can't connect to selenium grid.");
             }
 
             switch (platform) {

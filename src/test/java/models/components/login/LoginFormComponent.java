@@ -3,6 +3,7 @@ package models.components.login;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LoginFormComponent {
@@ -15,12 +16,12 @@ public class LoginFormComponent {
 
     private final static By incorrectPasswordTxtSel = MobileBy.xpath("//*[contains(@text, 'Please enter at least 8 characters')]");
     private final static By loginBtnSel = MobileBy.AccessibilityId("button-LOGIN");
-
     private final static By alertLoginSuccessfullySel = MobileBy.id("android:id/alertTitle");
 
     public LoginFormComponent(AppiumDriver<MobileElement> appiumDriver) {
         this.appiumDriver = appiumDriver;
     }
+    @Step("Input username as {usernameTxt}")
     public void inputUsername(String usernameTxt) {
         MobileElement userNameElem = appiumDriver.findElement(usernameSel);
         userNameElem.clear();
@@ -30,6 +31,7 @@ public class LoginFormComponent {
     public String getInvalidEmailStr(){
         return appiumDriver.findElement(incorrectEmailTxtSel).getText();
     }
+    @Step("Input password as {passwordTxt}")
     public void inputPassword(String passwordTxt) {
         MobileElement passwordElem = appiumDriver.findElement(passwordSel);
         if (!passwordTxt.isEmpty()) passwordElem.sendKeys(passwordTxt);
@@ -39,6 +41,7 @@ public class LoginFormComponent {
         return appiumDriver.findElement(incorrectPasswordTxtSel).getText();
     }
 
+    @Step("Click on login button")
     public void clickOnLoginBtn() {
         MobileElement loginBtnElem = appiumDriver.findElement(loginBtnSel);
         loginBtnElem.click();
